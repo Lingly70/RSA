@@ -1,49 +1,48 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 int selection(const char *option1, const char *option2){
 	int user_option;
 	
 	printf("RSA CRYPTOSYSTEM: (1) %s, (2) %s >", option1, option2);
-
+	
 	scanf("%d", &user_option);
 	
-	return option;
+	return user_option;
 }
 
-char *encrypted(char buffer[]){
-
-	char encrypted[1000];
-	int Length  = sizeof(buffer[])/sizeof(buffer[0]);
-	for(i=0; i<Length; i++){
-		buffer[i]= exponent(buffer[i]);
-		printf("extracting buffer. \n");	
-	}
-	return encrypted[];
+char* encrypted(const char buffer[]) {
+    static char encrypted[1000];  
+    int length = strlen(buffer);  
+    for (int i = 0; i < length; i++) {
+        encrypted[i] = exponent(buffer[i]);
+    }
+    encrypted[length] = '\0';  //null termination. 
+    return encrypted;
 }
 
 int exponent(int base, int exp){
 
-	int result = base;
-
-	for(i=0; i<exp; i++){
-		result *= base;
-	}
-	return result;
+	if(exp==0){	//verifying base case
+		return 1;
+	}else{
+		return (base*exponent(base, exp-1)); //recursion called.
 }
 
-int isPrime(int test){
+bool isPrime(int n) {
+    if (n <= 1) return false;
+    if (n == 2) return true;  
+    if (n % 2 == 0) return false;  // checking if 0, 1, or an even number.
 
-	int i;
-	for(i=2; i*i <=test ; i++){
-		if(test % i == 0){
-			printf("Your number is not prime. Try again");
-			return -1;
-		}
-	}
-	return 0;
+    for (int i = 3; i <= sqrt(n); i += 2) {
+        if (n % i == 0) return false;  //Trial division method applied in the forloop.
+    }
+	
+    return true;  //if all previous tests are false then the int provided is true for being prime. 
 
+	
 }
 
 
