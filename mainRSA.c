@@ -15,37 +15,7 @@ int selection(const char *option1, const char *option2){
 	return user_option;
 }
 
-char* encrypted(const char buffer[]) {
-    static char encrypted[1000];  
-    int length = strlen(buffer);  
-    for (int i = 0; i < length; i++) {
-        encrypted[i] = exponent(buffer[i]);
-    }
-    encrypted[length] = '\0';  //null termination. 
-    return encrypted;
-}
 
-int exponent(int base, int exp){
-
-	if(exp==0){	//verifying base case
-		return 1;
-	}else{
-		return (base*exponent(base, exp-1)); //recursion called.
-}
-
-bool isPrime(int n) {
-    if (n <= 1) return false;
-    if (n == 2) return true;  
-    if (n % 2 == 0) return false;  // checking if 0, 1, or an even number.
-
-    for (int i = 3; i <= sqrt(n); i += 2) {
-        if (n % i == 0) return false;  //Trial division method applied in the forloop.
-    }
-	
-    return true;  //if all previous tests are false then the int provided is true for being prime. 
-
-	
-}
 
 
 
