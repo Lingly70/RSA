@@ -62,15 +62,12 @@ int main(void){
         			printf("You entered the message: '%s'\n", message);
         			printf("Prime numbers p: %d, q: %d, and public exponent e: %d\n", p, q, e);
 
-			
+				char *encrypted_message = encrypt(message);
+    				char stored_encrypted[1024];
+    				strcpy(stored_encrypted, encrypted_message);
 
+				printf("Your encrypted message is: '%s'\n", stored_encrypted);
 			
-
-			
-
-			
-
-				
 			case 2:
 				printf("What to decode: ");
 				fgets(to_decode, 100, )
