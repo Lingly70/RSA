@@ -70,7 +70,7 @@ int main(void){
 			
 			case 2:
 				printf("What to decode: ");
-				fgets(to_decode, 100, )
+				fgets(to_decode, 100, );
 							
 			case 3: 
 				puts("Terminating program. ");
