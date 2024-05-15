@@ -3,7 +3,7 @@
 #include <stdlib.h>  
 
 //FUNCTION PROTOTYPE DECLARATION START
-char* encrypted(const char buffer[], int exp);
+char* encrypt(const char buffer[], int exp);
 char exponent(int base, int exp);
 bool is_prime(int n);
 int gcd(int a, int b);
@@ -13,7 +13,7 @@ int mod_inverse(int e, int phi)
 
 
 //FUNCTIONS START 
-char* encrypted(const char buffer[], int exp) {
+char* encrypt(const char buffer[], int exp) {
     static char encrypted[1000];  
     int length = strlen(buffer);  
     for (int i = 0; i < length; i++) {
