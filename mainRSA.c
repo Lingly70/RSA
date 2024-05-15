@@ -20,24 +20,36 @@ int selection(const char *option1, const char *option2){
 int main(void){
 	int option; 
 	int p, q, private, public;
-	
+	char message[1024];
 	do{
-		int pPrime, qPrime;
-		while (pPrime!=0 | qPrime!=0){
-			scanf("Enter first component p: %d, %d", &p, &q);		
-		}
-		int n = p*q;
-		option = menu();
-                char[100] to_encode;
+		option = selection("Encrypt", "Decrypt");
+		//asking for user's option.
 
 		switch (option){
 
 			case 1:
-				printf("What to encode: ");
-				fgets(to_encode, 100, stdin);
-				to_encode[strcspn(to_encode, "\n")] = 0;
+			printf("Enter the message to encrypt: ");
+       			scanf(" %[^\n]s", message);  // Read an entire line, including spaces
 
-				encode_message(to_encode); //Pointer not listed
+        		printf("Enter prime number p: ");
+        		scanf("%d", &p);
+
+        		printf("Enter prime number q: ");
+        		scanf("%d", &q);
+
+        		printf("Enter public key exponent e: ");
+        		scanf("%d", &public);
+
+        		printf("You entered the message: '%s'\n", message);
+        		printf("Prime numbers p: %d, q: %d, and public exponent e: %d\n", p, q, e);
+
+			
+
+			
+
+			
+
+				
 			case 2:
 				printf("What to decode: ");
 				fgets(to_decode, 100, )
