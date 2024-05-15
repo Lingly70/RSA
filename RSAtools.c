@@ -8,6 +8,7 @@ char exponent(int base, int exp);
 bool is_prime(int n);
 int gcd(int a, int b);
 bool is_coprime(int num1, int num2);
+int mod_inverse(int e, int phi)
 //FUNCTION PROTOTYPE DECLARATION END
 
 
@@ -37,7 +38,7 @@ bool is_prime(int n) {
     if (n % 2 == 0) return false;  // checking if 0, 1, or an even number.
 
     for (int i = 3; i <= sqrt(n); i += 2) {
-        if (n % i == 0) return false;  //Trial division method applied in the forloop.
+        if (n % i == 0) return false;  //trial division method applied in the forloop.
     }
     return true;  //if all previous tests are false then the int provided is true for being prime. 
 }
@@ -55,5 +56,16 @@ int gcd(int a, int b) {
 bool is_coprime(int num1, int num2){
 	return (gcd(num1, num2)==1);
 }
+
+int mod_inverse(int e, int phi) {
+    e = e % phi;
+    for (int x = 1; x < phi; x++) {
+        if ((e * x) % phi == 1)
+            return x;
+    }
+    return 1; // return 1 if no modular inverse is found (unlikely scenario)
+}
+
+
 
 	
