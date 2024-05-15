@@ -17,13 +17,6 @@ int selection(const char *option1, const char *option2){
 
 
 
-
-
-int calculateKey(int p, int q){
-	
-}
-
-
 int main(void){
 	int option; 
 	int p, q, private, public;
@@ -55,13 +48,7 @@ int main(void){
 				break;
 		
 		}
-
-	
-	
-	
 	
 	}while(option!=3);
-
-
 
 }
