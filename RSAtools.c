@@ -4,17 +4,6 @@
 #include <math.h>
 
 
-//FUNCTION PROTOTYPE DECLARATION START
-
-char* encrypt(const char buffer[], int exp);
-char exponent(char base, int exp);
-int is_prime(int n);
-int gcd(int a, int b);
-int is_coprime(int num1, int num2);
-int mod_inverse(int e, int phi);
-
-	
-//FUNCTION PROTOTYPE DECLARATION END
 
 
 //FUNCTIONS START 
