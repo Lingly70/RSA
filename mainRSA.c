@@ -1,4 +1,4 @@
-#include "RSAtools.c"
+#include "RSAtools.h"
 
 #include <stdlib.h>
 #include <stdio.h>
