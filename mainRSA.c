@@ -11,7 +11,7 @@ int selection(const char *option1, const char *option2, const char *option3){
 
 	while (!(user_option!=1 ^ user_option!=2 ^ user_option!=3)){
 		scanf("%d", &user_option);
-		if(!passed)puts("Wrong input! Try again.");
+		if(!(user_option!=1 ^ user_option!=2 ^ user_option!=3))puts("Wrong input! Try again.");
 	}
 	
 	return user_option;
@@ -59,7 +59,7 @@ int main(void){
 				
 
         			printf("You entered the message: '%s'\n", message);
-        			printf("Prime numbers p: %d, q: %d, and public exponent e: %d\n", p, q, e);
+        			printf("Prime numbers p: %d, q: %d, and public key n: %d\n", p, q, n);
 
 				char *encrypted_message = encrypt(message);
     				char stored_encrypted[1024];
@@ -68,8 +68,7 @@ int main(void){
 				printf("Your encrypted message is: '%s'\n", stored_encrypted);
 			
 			case 2:
-				printf("What to decode: ");
-				fgets(to_decode, 100, );
+				
 							
 			case 3: 
 				puts("Terminating program. ");
