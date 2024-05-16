@@ -43,10 +43,10 @@ int main(void){
         				printf("Enter prime number q: ");
         				scanf("%d", &q);
 
-					if(!(is_prime(p) && is_prime(q))){
+					if(is_prime(p)!=1 && is_prime(q)!=1){
 						puts("One of your inputs is not prime. Try again. ");
 					}
-				}while(!(is_prime(p) && is_prime(q)));//END WHILE LOOP P_AND_Q
+				}while(is_prime(p)!=1 && is_prime(q)!=1);//END WHILE LOOP P_AND_Q
 
 				n = p*q;
 
@@ -54,9 +54,9 @@ int main(void){
 					printf("Enter public key value: ");
         				scanf("%d", &public);
 
-					if(!(is_coprime(n, public))) puts("Your public key value is not prime. Try again. ");
+					if(is_coprime(n, public)!=1) puts("Your public key value is not prime. Try again. ");
 					
-				}while(is_coprime(n, public));
+				}while(is_coprime(n, public)!=1);
 				
 
         			printf("You entered the message: '%s'\n", message);
