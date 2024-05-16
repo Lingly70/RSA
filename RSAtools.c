@@ -50,7 +50,9 @@ int gcd(int a, int b) {
 
 int is_coprime(int num1, int num2){
 	int value;
-	(gcd(num1, num2)==1)? value=1:value=0;
+	if(gcd(num1, num2)==1){
+		value=1;
+	}else{value=0;}
 
 	return value;
 }
