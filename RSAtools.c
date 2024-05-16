@@ -1,14 +1,19 @@
 #include <stdio.h>                                                                                                      
 #include <string.h>                                                                                                     
 #include <stdlib.h>  
+#include <math.h>
+
 
 //FUNCTION PROTOTYPE DECLARATION START
+
 char* encrypt(const char buffer[], int exp);
 char exponent(int base, int exp);
 int is_prime(int n);
 int gcd(int a, int b);
 int is_coprime(int num1, int num2);
-int mod_inverse(int e, int phi)
+int mod_inverse(int e, int phi);
+
+	
 //FUNCTION PROTOTYPE DECLARATION END
 
 
@@ -30,7 +35,8 @@ char exponent(char base, int exp){
 		return 1;
 	}else{
 		return (char)(current_letter*(int)exponent(base, exp-1)); //recursion called.
-}
+	}
+}	
 
 
 int gcd(int a, int b) {
