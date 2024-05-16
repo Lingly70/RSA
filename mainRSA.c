@@ -7,10 +7,9 @@
 
 int selection(const char *option1, const char *option2, const char *option3){
 	int user_option = 4;
-	 passed = (user_option!=1 ^ user_option!=2 ^ user_option!=3);
 	printf("RSA CRYPTOSYSTEM: (1) %s, (2) %s >", option1, option2);
 
-	while (!passed){
+	while (!(user_option!=1 ^ user_option!=2 ^ user_option!=3)){
 		scanf("%d", &user_option);
 		if(!passed)puts("Wrong input! Try again.");
 	}
