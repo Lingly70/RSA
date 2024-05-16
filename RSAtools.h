@@ -2,6 +2,12 @@
 #define RSATOOLS_H
 
 
+#include <stdio.h>                                                                                                      
+#include <string.h>                                                                                                     
+#include <stdlib.h>  
+#include <math.h>
+
+
 char* encrypt(const char buffer[], int exp);
 char exponent(char base, int exp);
 int gcd(int a, int b);
