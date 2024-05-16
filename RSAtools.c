@@ -5,9 +5,9 @@
 //FUNCTION PROTOTYPE DECLARATION START
 char* encrypt(const char buffer[], int exp);
 char exponent(int base, int exp);
-bool is_prime(int n);
+int is_prime(int n);
 int gcd(int a, int b);
-bool is_coprime(int num1, int num2);
+int is_coprime(int num1, int num2);
 int mod_inverse(int e, int phi)
 //FUNCTION PROTOTYPE DECLARATION END
 
@@ -32,17 +32,6 @@ char exponent(char base, int exp){
 		return (char)(current_letter*(int)exponent(base, exp-1)); //recursion called.
 }
 
-bool is_prime(int n) {
-    if (n <= 1) return false;
-    if (n == 2) return true;  
-    if (n % 2 == 0) return false;  // checking if 0, 1, or an even number.
-
-    for (int i = 3; i <= sqrt(n); i += 2) {
-        if (n % i == 0) return false;  //trial division method applied in the forloop.
-    }
-    return true;  //if all previous tests are false then the int provided is true for being prime. 
-}
-
 
 int gcd(int a, int b) {
     while (b != 0) {
@@ -53,9 +42,25 @@ int gcd(int a, int b) {
     return a;
 }
 
-bool is_coprime(int num1, int num2){
-	return (gcd(num1, num2)==1);
+int is_coprime(int num1, int num2){
+	int value;
+	(gcd(num1, num2)==1)? value=1:value=0;
+
+	return value;
 }
+
+
+int is_prime(int n) {
+    if (n <= 1) return 0;
+    if (n == 2) return 0;  
+    if (n % 2 == 0) return 0;  // checking if 0, 1, or an even number.
+
+    for (int i = 3; i <= sqrt(n); i += 2) {
+        if (n % i == 0) return 0;  //trial division method applied in the forloop.
+    }
+    return 1;  //if all previous tests are false then the int provided is true for being prime. 
+}
+
 
 int mod_inverse(int e, int phi) {
     e = e % phi;
