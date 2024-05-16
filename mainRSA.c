@@ -33,7 +33,7 @@ int main(void){
 			case 1:
 				
 				printf("Enter the message to encrypt: ");
-       				scanf(" %[^\n]s", message);  // Read an entire line, including spaces
+       				scanf(" %[^\n]s", message);  // reads an entire line, including spaces
 				
         			do{
 					printf("Enter prime number p: ");
@@ -61,7 +61,7 @@ int main(void){
         			printf("You entered the message: '%s'\n", message);
         			printf("Prime numbers p: %d, q: %d, and public key n: %d\n", p, q, n);
 
-				char *encrypted_message = encrypt(message);
+				char *encrypted_message = encrypt(message, n);
     				char stored_encrypted[1024];
     				strcpy(stored_encrypted, encrypted_message);
 
