@@ -20,63 +20,70 @@ int selection(const char *option1, const char *option2, const char *option3){
 
 
 
-int main(void){
-	int option; 
-	int p, q, n, private, public;
-	char message[1024];
-	do{
-		option = selection("Encrypt", "Decrypt", "End session");
-		//asking for user's option.
+int main(void) {
+    int option, p, q, n, phi, e, d;
+    char message[1024];
 
-		switch (option){
+    do {
+        option = selection("Encrypt", "Decrypt", "End session");
 
-			case 1:
-				
-				printf("Enter the message to encrypt: ");
-       				scanf(" %[^\n]s", message);  // reads an entire line, including spaces
-				
-        			do{
-					printf("Enter prime number p: ");
-        				scanf("%d", &p);
+        switch (option) {
+            case 1:
+                printf("Enter the message to encrypt: ");
+                scanf(" %[^\n]s", message);
 
-        				printf("Enter prime number q: ");
-        				scanf("%d", &q);
+                do {
+                    printf("Enter prime number p: ");
+                    scanf("%d", &p);
+                    printf("Enter prime number q: ");
+                    scanf("%d", &q);
+                    if (!is_prime(p) || !is_prime(q)) {
+                        puts("One of your inputs is not prime. Try again.");
+                    }
+                } while (!is_prime(p) || !is_prime(q));
 
-					if(is_prime(p)!=1 && is_prime(q)!=1){
-						puts("One of your inputs is not prime. Try again. ");
-					}
-				}while(is_prime(p)!=1 && is_prime(q)!=1);//END WHILE LOOP P_AND_Q
+                n = p * q;
+                phi = (p - 1) * (q - 1);
 
-				n = p*q;
+                do {
+                    printf("Enter public key value (e): ");
+                    scanf("%d", &e);
+                    if (gcd(e, phi) != 1) {
+                        puts("Public key e is not coprime with phi. Try again.");
+                    }
+                } while (gcd(e, phi) != 1);
 
-				do{
-					printf("Enter public key value: ");
-        				scanf("%d", &public);
+                d = mod_inverse(e, phi); // Compute private key
+                printf("Public key: (%d, %d)\n", e, n);
+                printf("Private key: (%d, %d)\n", d, n);
 
-					if(is_coprime(n, public)!=1) puts("Your public key value is not prime. Try again. ");
-					
-				}while(is_coprime(n, public)!=1);
-				
+                char* encrypted_message = encrypt(message, e, n);
+                printf("Encrypted message: '%s'\n", encrypted_message);
+                break;
 
-        			printf("You entered the message: '%s'\n", message);
-        			printf("Prime numbers p: %d, q: %d, and public key n: %d\n", p, q, n);
+            case 2:
+                printf("Enter the encrypted message to decrypt: ");
+                scanf(" %[^\n]s", message);
 
-				char *encrypted_message = encrypt(message, n);
-    				char stored_encrypted[1024];
-    				strcpy(stored_encrypted, encrypted_message);
+                printf("Enter private key (d): ");
+                scanf("%d", &d);
+                printf("Enter modulus (n): ");
+                scanf("%d", &n);
 
-				printf("Your encrypted message is: '%s'\n", stored_encrypted);
-			
-			case 2:
-				
-							
-			case 3: 
-				puts("Terminating program. ");
-				break;
-			default:
-				break;
-		}
-	
-	}while(option!=3);
+                char* decrypted_message = decrypt(message, d, n);
+                printf("Decrypted message: '%s'\n", decrypted_message);
+                break;
 
+            case 3:
+                puts("Terminating program.");
+                break;
+
+            default:
+                break;
+        }
+
+    } while (option != 3);
+
+    return 0;
 }
+
