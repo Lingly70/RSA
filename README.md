@@ -53,9 +53,9 @@ Similarly to the steps to encrypting, except one must select 2 as the encryption
 which respects the equation
 
 <p align="center">
-    \[
-    (e \times d) \mod (p-1) \times (q-1) = 1
-    \]
+    
+    (e * d) mod (p-1) * (q-1) = 1
+    
 </p>
 
 In other words, where private key _d_ is the modular multiplicative inverse of public key _e_ mod (p-1) * (q-1).
