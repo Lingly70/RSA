@@ -3,13 +3,14 @@
 
 
 //FUNCTIONS START 
-char* encrypt(const char buffer[], int exp) {
-    static char encrypted[1000];  
-    int length = strlen(buffer);  
+char* encrypt(const char buffer[], int e, int n) {
+    static char encrypted[1024];
+    int length = strlen(buffer);
     for (int i = 0; i < length; i++) {
-        encrypted[i] = exponent(buffer[i], exp);
+        //encrypt each character using modular exponentiation
+        encrypted[i] = mod_exp(buffer[i], e, n);
     }
-    encrypted[length] = '\0';  //append such escape sequence for null termination.
+    encrypted[length] = '\0'; // null terminate string
     return encrypted;
 }
 
@@ -45,14 +46,14 @@ int is_coprime(int num1, int num2){
 
 int is_prime(int n) {
     if (n <= 1) return 0;
-    if (n == 2) return 0;  
-    if (n % 2 == 0) return 0;  // checking if 0, 1, or an even number.
-
-    for (int i = 3; i <= sqrt(n); i += 2) {
-        if (n % i == 0) return 0;  //trial division method applied in the forloop.
+    if (n <= 3) return 1;
+    if (n % 2 == 0 || n % 3 == 0) return 0;
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) return 0;
     }
-    return 1;  //if all previous tests are false then the int provided is true for being prime. 
+    return 1;
 }
+
 
 
 
