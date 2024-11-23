@@ -55,14 +55,20 @@ int is_prime(int n) {
 }
 
 
-int mod_inverse(int e, int phi) {
-    e = e % phi;
-    for (int x = 1; x < phi; x++) {
-        if ((e * x) % phi == 1)
-            return x;
+
+int mod_exp(int base, int exp, int mod) {
+    int result = 1;
+    base = base % mod; // is base within mod range??
+    while (exp > 0) {
+        if (exp % 2 == 1) {
+            result = (result * base) % mod; // multiply when exp is odd
+        }
+        exp = exp / 2; 
+        base = (base * base) % mod; 
     }
-    return 1; // return 1 if no modular inverse is found (unlikely scenario)
+    return result;
 }
+
 
 
 
