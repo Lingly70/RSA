@@ -14,15 +14,18 @@ char* encrypt(const char buffer[], int e, int n) {
     return encrypted;
 }
 
-char exponent(char base, int exp){
-  	int current_letter = (int)base; 
+char* decrypt(const char buffer[], int d, int n) {
+    static char decrypted[1024];
+    int length = strlen(buffer);
+    for (int i = 0; i < length; i++) {
+        // Decrypt each character using modular exponentiation
+        decrypted[i] = mod_exp(buffer[i], d, n);
+    }
+    decrypted[length] = '\0'; // Null termination
+    return decrypted;
+}
 
-	if(exp==0){	//verifying base case
-		return 1;
-	}else{
-		return (char)(current_letter*(int)exponent(base, exp-1)); //recursion called.
-	}
-}	
+
 
 
 int gcd(int a, int b) {
