@@ -5,18 +5,6 @@
 #include <math.h>
 #include <string.h>
 
-int selection(const char *option1, const char *option2, const char *option3){
-	int user_option = 4;
-	printf("RSA CRYPTOSYSTEM: (1) %s, (2) %s >", option1, option2);
-
-	while (!(user_option!=1 ^ user_option!=2 ^ user_option!=3)){
-		scanf("%d", &user_option);
-		if(!(user_option!=1 ^ user_option!=2 ^ user_option!=3))puts("Wrong input! Try again.");
-	}
-	
-	return user_option;
-}
-
 
 
 
@@ -25,7 +13,12 @@ int main(void) {
     char message[1024];
 
     do {
-        option = selection("Encrypt", "Decrypt", "End session");
+        printf("\nChoose an option:\n");
+        printf("1. Encrypt a message\n");
+        printf("2. Decrypt a message\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &option);
 
         switch (option) {
             case 1:
