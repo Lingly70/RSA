@@ -53,7 +53,12 @@ int main(void) {
                     }
                 } while (gcd(e, phi) != 1);
 
-                d = mod_inverse(e, phi); // Compute private key
+                d = mod_inverse(e, phi);  // calculate private key
+		if (d == -1) {
+    			printf("Error: Modular inverse not found. Check your public key.\n");
+    			return 1; 
+		}
+		    
                 printf("Public key: (%d, %d)\n", e, n);
                 printf("Private key: (%d, %d)\n", d, n);
 
