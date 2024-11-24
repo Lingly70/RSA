@@ -17,4 +17,9 @@ int is_coprime(int num1, int num2);
 int is_prime(int n);
 int mod_inverse(int e, int phi);
 int mod_exp(int base, int exp, int mod);
+int mod_inverse(int e, int phi);
+int extended_gcd(int a, int b, int *x, int *y);
+
+
+
 #endif
