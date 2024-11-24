@@ -73,6 +73,33 @@ int mod_exp(int base, int exp, int mod) {
     return result;
 }
 
+int mod_inverse(int e, int phi) {
+    int x, y; // variables to store results from extended GCD
+    int gcd = extended_gcd(e, phi, &x, &y);
+    if (gcd != 1) {
+        return -1; // case where modular inverse doesn't exist
+    }
+    // makes sure x is positive
+    return (x % phi + phi) % phi;
+}
+
+// extended Euclidean Algorithm for GCD
+int extended_gcd(int a, int b, int *x, int *y) {
+    if (b == 0) {
+        *x = 1;
+        *y = 0;
+        return a;
+    }
+    int x1, y1; // store results of recursive call
+    int gcd = extended_gcd(b, a % b, &x1, &y1);
+
+    *x = y1;
+    *y = x1 - (a / b) * y1;
+
+    return gcd;
+}
+
+
 
 
 
