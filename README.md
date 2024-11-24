@@ -29,7 +29,11 @@ This application implements a basic RSA cryptosystem in C, allowing users to:
 ### 1. Encrypting a message:
  Run the program and select the encrypt option:
  ```
-RSA CRYPTOSYSTEM: (1) Encrypt, (2) Decrypt >
+Choose an option:
+1. Encrypt a message
+2. Decrypt a message
+3. Exit
+Enter your choice:
 1
 ```
 Enter the message you want to encrypt:
