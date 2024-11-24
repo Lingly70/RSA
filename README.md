@@ -18,6 +18,7 @@ This application implements a basic RSA cryptosystem in C, allowing users to:
  Make sure all relevant files are within same directory. Make script executable, and run the exec.sh script.
  ```
  ~/projects/RSA chmod +x exec.sh
+ ~/projects/RSA ./exec.sh
 ```
  Then one can run the program
  ```
